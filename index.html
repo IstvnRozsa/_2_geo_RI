@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 
 <head>
     <meta charset="UTF-8">
@@ -27,9 +27,9 @@
 </head>
 
 <body id="body">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">NHL Csapatok 23/24</a>
+          <a class="navbar-brand" href="#">&#x1F3D2; NHL Csapatok 23/24</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -50,10 +50,10 @@
     <div id="map"></div>
     <div class="container" id="docs">
       
-      <h1 class="mt-5 mb-4 text-center">NHL Csapatok Térkép - Dokumentáció</h1>
+      <h1 class="mt-5 mb-4 text-center">&#x1F3D2; NHL Csapatok Térkép - Dokumentáció</h1>
   
       <div class="documentation">
-          <h2>Bevezetés</h2>
+          <h2>&#x1F914; Bevezetés</h2>
           <p>Ez a térkép az NHL (National Hockey League) csapatainak lokációit mutatja be interaktív formában. 
             A térképen minden csapat elérhető, és egyedi információkat lehet megjeleníteni a csapatokról, 
             beleértve a teljes nevét, divízióját, stadion címét, városát és hivatalos weboldalát. 
@@ -61,14 +61,14 @@
              és emellett lehetőség van a divíziók külön layerekként történő megjelenítésére is. 
             Továbbá, a térképen szerepel egy becslés is, ami az 2023-as szezonban várható eredményeket mutatja.</p>
   
-          <h2>Funkciók</h2>
+          <h2>&#x1F5FA; Térkép Funkciók</h2>
           <ol>
             <li>Csapatok Megjelenítése:</li>
             <ul>
               <li>Kattintás egy csapatra: megjelenik a csapat teljes neve, divíziója, stadion címe, városa és hivatalos weboldala.</li>
               <li>Divíziók megjelenítése külön layerekként.</li>
             </ul>
-            <li>Térkép Alapjának Váltása:</li>
+            <li>Térkép Váltása:</li>
             <ul>
               <li>Satelit</li>
               <li>OpenStreetMap</li>
@@ -82,9 +82,9 @@
 
           <div class="container-sm">
 
-            <h2>Előzetes adat feldolgozás és transzformáció</h2>
+            <h2>&#x1F4CA; Előzetes adat feldolgozás és transzformáció</h2>
             <p>Az NHL API az észak amerikai jégkorong liga csapatainak adatait szolgáltatja, beleértve a csapatok nevét, stadionokat és egyéb kapcsolódó információkat, amelyek segítségével részletes és naprakész képet kaphatunk a csapatokról. Az NHL API által szolgáltatott adatokat Python programozási nyelv segítségével feldolgoztam, lehetővé téve az adatok elemzését, vizualizációját és egyéb kiértékelését a projekt számára.</p>
-          <h3>NHL 2023/2024 adatainak lekérdezése</h3>
+          <h3>&#x1F527; NHL 2023/2024 adatainak lekérdezése</h3>
               <pre>
                 <code class="language-python">
 import json
@@ -115,14 +115,14 @@ except requests.RequestException as e:
     # Handle exceptions like network errors here
     print('Request Exception:', e)</code></pre>
 
-    <h3>A csapat adatok kiválasztása</h3>
+    <h3>&#x1F527; A csapat adatok kiválasztása</h3>
               <pre>
                 <code class="language-python">
 teams_json = json_data["teams"]
 print(teams_json)</code></pre>
 
 
-<h3>Geolokátor használata</h3>
+<h3>&#x1F527; Geolokátor használata</h3>
               <pre>
                 <code class="language-python">
 for team in teams_json:
@@ -141,7 +141,7 @@ except:
 time.sleep(2)</code></pre>
 
 
-<h3>A lekérdezett adatok mentése</h3>
+<h3>&#x1F527; A lekérdezett adatok mentése</h3>
               <pre>
                 <code class="language-python">
 file_path = "data/data.json"
