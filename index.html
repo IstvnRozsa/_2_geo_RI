@@ -54,6 +54,10 @@
   
       <div class="documentation">
           <h2>&#x1F914; Bevezetés</h2>
+          <p>A National Hockey League (NHL) (franciául: Ligue nationale de hockey LNH) egy profi jégkorongliga, 
+            melyben 32 észak-amerikai csapat huszonöt amerikai és hét kanadai szerepel. Az NHL-t tartják a világ vezető,
+             legnagyobb jégkorong ligájának, így tagja az észak-amerikai profi sportligáknak. 
+             Minden szezon végén a legsikeresebb csapat Észak-Amerika legrégebbi trófeáját, a Stanley-kupát nyeri el.</p>
           <p>Ez a térkép az NHL (National Hockey League) csapatainak lokációit mutatja be interaktív formában. 
             A térképen minden csapat elérhető, és egyedi információkat lehet megjeleníteni a csapatokról, 
             beleértve a teljes nevét, divízióját, stadion címét, városát és hivatalos weboldalát. 
@@ -157,6 +161,40 @@ print(f"JSON data has been saved to '{file_path}'")</code></pre>
         </div>
         
       </div>
+
+      
+      
+      
+      <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                  <h2>&#x1F4CF; KML Fájlok generálása</h2>
+                  <p>A KML fájlok előállításához először le kellett szűrni a diviziókra. A létrehozott fájlok a ligán belüli azonos divízióban lévő csapatokat köti össze, ezek külön rétegenként jelennek meg a térképen.</p>
+                  
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                  <h2>&#x1F52E; Következő szezon előrejelzés</h2>
+                  <p>Észak amerikára vetítve megjelenik egy külön rétegként a 2023-2024-es szezon előrejelzett pontszámai és helyezései.</p>
+                  
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                  <h2>&#x1F3C6; Az előző 6 év bajnoka label</h2>
+                  <p>A térkép bal alsó sarkában egy listában látható az előző 6 év bajnoka.</p>
+            
+                </div>
+            </div>
+        </div>
+    </div>
+      
       <h2>&#x1F4C1; Források</h2>
       <ul>
         <li><a href="https://statsapi.web.nhl.com/api/v1/teams">NHL API</a></li>
