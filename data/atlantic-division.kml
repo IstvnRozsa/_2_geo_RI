@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2"
+  xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+  <Document>
+    <name>Atlantic Division</name>
+    <open>1</open>
+    <Style id="style">
+      <LineStyle>
+        <color>ff0000ff</color>
+        <width>8</width>
+      </LineStyle>
+    </Style>
+    <Style id="style0">
+      <LineStyle>
+        <color>ff0000ff</color>
+        <width>8</width>
+      </LineStyle>
+    </Style>
+    <StyleMap id="stylemap_id0">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#style0</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#style</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Placemark>
+      <name>Pacific Division</name>
+      <styleUrl>#stylemap_id0</styleUrl>
+      <LineString>
+        <coordinates>
+          -71.06216222263835,42.3662986,0
+-78.87663585570175,42.87514665,0
+-73.56923562545731,45.49605985,0
+-75.92689732572379,45.296906899999996,0
+-79.37907772483726,43.64343375,0
+-80.32552,26.158496,0
+-82.45189031562487,27.942704,0
+-83.05516216701272,42.34092995,0
+          
+        </coordinates>
+      </LineString>
+    </Placemark>
+  </Document>
+</kml>

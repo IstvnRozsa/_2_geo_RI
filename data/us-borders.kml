@@ -9,7 +9,7 @@
 	<SimpleField name="L_STATEFP" type="string"></SimpleField>
 </Schema>
   <Placemark>
-  <Style><LineStyle><color>ff0000ff</color></LineStyle>  <PolyStyle><fill>0</fill></PolyStyle></Style>
+  <Style><LineStyle><color>ff0000ff</color></LineStyle>  <PolyStyle><fill>1</fill></PolyStyle></Style>
 	<ExtendedData><SchemaData schemaUrl="#gz_2010_us_outline_500k">
 		<SimpleData name="TYPE">CANADIAN</SimpleData>
 		<SimpleData name="R_STATEFP">53</SimpleData>

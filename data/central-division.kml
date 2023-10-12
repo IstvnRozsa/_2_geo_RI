@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2"
+  xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+  <Document>
+    <name>Central Division</name>
+    <open>1</open>
+    <Style id="style">
+      <LineStyle>
+        <color>ff0000ff</color>
+        <width>8</width>
+      </LineStyle>
+    </Style>
+    <Style id="style0">
+      <LineStyle>
+        <color>ff0000ff</color>
+        <width>8</width>
+      </LineStyle>
+    </Style>
+    <StyleMap id="stylemap_id0">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#style0</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#style</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Placemark>
+      <name>Juan de Fuca Plate</name>
+      <styleUrl>#stylemap_id0</styleUrl>
+      <LineString>
+        <coordinates>
+          -87.67418510441388,41.88068305,0
+          
+          -86.77838189265074,36.1589806,0
+          -90.20263932150607,38.62680845,0
+          
+          -96.81027213460834,32.7905076,0
+          -93.10108511954809,44.9447659,0
+          -97.1437218346315,49.8925737,0
+          -105.00754401780362,39.748683799999995,0
+          -111.92848865050732,33.426643,0
+        </coordinates>
+      </LineString>
+    </Placemark>
+  </Document>
+</kml>

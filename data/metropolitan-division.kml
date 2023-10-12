@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2"
+  xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+  <Document>
+    <name>Metropolitan Division</name>
+    <open>1</open>
+    <Style id="style">
+      <LineStyle>
+        <color>ff0000ff</color>
+        <width>8</width>
+      </LineStyle>
+    </Style>
+    <Style id="style0">
+      <LineStyle>
+        <color>ff0000ff</color>
+        <width>8</width>
+      </LineStyle>
+    </Style>
+    <StyleMap id="stylemap_id0">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#style0</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#style</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Placemark>
+      <name>Pacific Division</name>
+      <styleUrl>#stylemap_id0</styleUrl>
+      <LineString>
+        <coordinates>
+          -74.17106309834053,40.7336045,0
+-73.72592286769509,40.7116942,0
+-73.99351594545152,40.750512900000004,0
+-75.17201654615069,39.901100400000004,0
+-79.9895408180193,40.4395912,0
+-78.7219165859909,35.80339805,0
+-77.0209377602636,38.8981883,0
+-83.00608002061449,39.9691873,0
+          
+        </coordinates>
+      </LineString>
+    </Placemark>
+  </Document>
+</kml>
