@@ -7,7 +7,7 @@
     <title>Térinformatika RI</title>
 
     <!-- Main CSS -->
-    
+    <link rel="stylesheet" href="/css/main.css">
 
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
@@ -16,15 +16,18 @@
     <script src='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.3.1/leaflet-omnivore.min.js'></script>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/main.css" />
+
+    <!-- Prism.js CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.css" rel="stylesheet">
+    
 </head>
 
 </head>
 
-<body>
+<body id="body">
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Térinformatika RI</a>
+          <a class="navbar-brand" href="#">NHL Season 23/24</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -42,9 +45,129 @@
       </nav>
     <!-- Map container -->
     <div id="map"></div>
+
+    <div class="container">
+      <h1 class="mt-5 mb-4 text-center">NHL Csapatok Térkép - Dokumentáció</h1>
+  
+      <div class="documentation">
+          <h2>Bevezetés</h2>
+          <p>Ez a térkép az NHL (National Hockey League) csapatainak lokációit mutatja be interaktív formában. 
+            A térképen minden csapat elérhető, és egyedi információkat lehet megjeleníteni a csapatokról, 
+            beleértve a teljes nevét, divízióját, stadion címét, városát és hivatalos weboldalát. 
+            A felhasználó szabadon választhatja a térkép alapját (Satelit, OpenStreetMap, OpenStreetMap by Mapbox)
+             és emellett lehetőség van a divíziók külön layerekként történő megjelenítésére is. 
+            Továbbá, a térképen szerepel egy becslés is, ami az 2023-as szezonban várható eredményeket mutatja.</p>
+  
+          <h2>Funkciók</h2>
+          <ol>
+            <li>Csapatok Megjelenítése:</li>
+            <ul>
+              <li>Kattintás egy csapatra: megjelenik a csapat teljes neve, divíziója, stadion címe, városa és hivatalos weboldala.</li>
+              <li>Divíziók megjelenítése külön layerekként.</li>
+            </ul>
+            <li>Térkép Alapjának Váltása:</li>
+            <ul>
+              <li>Satelit</li>
+              <li>OpenStreetMap</li>
+              <li>OpenStreetMap by Mapbox</li>
+            </ul>
+            <li>Becslés</li>
+            <ul>
+              <li>Megjelenít egy becslést a 2023/2024-es szezonra vonatkozóan az egyes csapatok teljesítményéről.</li>
+            </ul>
+          </ol>
+
+          <div class="container-sm">
+
+            <h2>Előzetes adat feldolgozás és transzformáció</h2>
+            <p>Az NHL API az észak amerikai jégkorong liga csapatainak adatait szolgáltatja, beleértve a csapatok nevét, stadionokat és egyéb kapcsolódó információkat, amelyek segítségével részletes és naprakész képet kaphatunk a csapatokról. Az NHL API által szolgáltatott adatokat Python programozási nyelv segítségével feldolgoztam, lehetővé téve az adatok elemzését, vizualizációját és egyéb kiértékelését a projekt számára.</p>
+          <h3>NHL 2023/2024 adatainak lekérdezése</h3>
+              <pre>
+                <code class="language-python">
+import json
+import requests
+from geopy.geocoders import Nominatim
+import time
+
+# URL of the JSON API endpoint
+api_url = 'https://statsapi.web.nhl.com/api/v1/teams'
+
+try:
+    # Send a GET request to the API
+    response = requests.get(api_url)
+
+    # Check if the request was successful (status code 200)
+    if response.status_code == 200:
+        # Parse the JSON data from the response
+        json_data = response.json()
+
+        # Now you can work with the json_data as a Python dictionary
+        print(json_data)
+
+    else:
+        # If the response status code is not 200, print an error message
+        print('Error:', response.status_code)
+
+except requests.RequestException as e:
+    # Handle exceptions like network errors here
+    print('Request Exception:', e)</code></pre>
+
+    <h3>A csapat adatok kiválasztása</h3>
+              <pre>
+                <code class="language-python">
+teams_json = json_data["teams"]
+print(teams_json)</code></pre>
+
+
+<h3>Geolokátor használata</h3>
+              <pre>
+                <code class="language-python">
+for team in teams_json:
+geolocator = Nominatim(user_agent="university")
+location = geolocator.geocode(team["venue"]["name"])
+print(team["venue"]["name"])
+try:
+  team["address"] = location.address
+    team["longitude"] = location.longitude
+    team["latitude"] = location.latitude
+except:
+  team["address"] = ""
+  team["longitude"] = ""
+  team["latitude"] = ""
+                      
+time.sleep(2)</code></pre>
+
+
+<h3>A lekérdezett adatok mentése</h3>
+              <pre>
+                <code class="language-python">
+file_path = "data/data.json"
+with open(file_path, "w") as json_file:
+  json.dump(teams_json, json_file)
+                  
+print(f"JSON data has been saved to '{file_path}'")</code></pre>
+
+
+
+
+          
+        </div>
+        
+      </div>
+      <div id="footer">
+        <p class="text-center">&copy; Developed with &#10084;&#65039; by Istvan Rozsa</p>
+    </div>
+  </div>
     
     
     <script src="/js/main.js"></script>
+    <!-- Prism.js JS -->
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+    <!-- Prism.js Language Support -->
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-python.min.js"></script>
+    <!-- Clipboard.js for copying text to clipboard -->
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
+    <!-- Custom JavaScript -->
 </body>
 
 </html>

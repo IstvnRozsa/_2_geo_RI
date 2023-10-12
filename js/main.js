@@ -1,12 +1,4 @@
 
-
-var hockeyIcon = L.icon({
-  iconUrl: './pictures/ice-hockey.png', // URL to your custom icon image
-  iconSize: [32, 32],
-  iconAnchor: [16, 32],
-  popupAnchor: [0, -32]
-});
-
 var teamsLayerGroup = L.layerGroup();
 // Fetch JSON data from a local file using fetch API
 fetch("data/data.json")
@@ -14,6 +6,13 @@ fetch("data/data.json")
   .then((data) => {
     // Iterate through the list of objects
     data.forEach((item) => {
+      var hockeyIcon = L.icon({
+        iconUrl: `https://assets.nhle.com/logos/nhl/svg/${item.abbreviation}_dark.svg`, // URL to your custom icon image  ./pictures/ice-hockey.png https://assets.nhle.com/logos/nhl/svg/BOS_dark.svg
+        iconSize: [50, 50],
+        iconAnchor: [16, 32],
+        popupAnchor: [0, -32]
+      });
+
       var html = `
                     <h3>${item.name}</h3>
                     <h6><a href="${item.officialSiteUrl}">Offical site</a></h6>
@@ -85,6 +84,23 @@ var kmlPacificDivLayerGroup = omnivore.kml('./data/pacific-division.kml',null, L
       };
   }}));
 
+
+// Image Layer - Statistics
+var statsLayerGroup = L.layerGroup();
+var imageUrl = './data/nhl-projected-standings.png';
+var errorOverlayUrl = 'https://cdn-icons-png.flaticon.com/512/110/110686.png';
+var altText = 'Projected NHL Standings 2023';
+var latLngBounds = L.latLngBounds([[49.384358, -66.934570], [24.396308, -125.001650]]);
+
+var imageOverlay = L.imageOverlay(imageUrl, latLngBounds, {
+    opacity: 0.3,
+    errorOverlayUrl: errorOverlayUrl,
+    alt: altText,
+    interactive: true
+});
+statsLayerGroup.addLayer(imageOverlay);
+
+
 // Create an overlay object for the layer control
 var overlays = {
   "Teams": teamsLayerGroup,
@@ -92,6 +108,7 @@ var overlays = {
   "Atlantic division":kmlAtlanticDivLayerGroup,
   "Metropolitan division":kmlMetropolitanDivLayerGroup,
   "Pacific division":kmlPacificDivLayerGroup,
+  "Projected Points 2023":statsLayerGroup
 };
 
 // OpenStreetMap layer
@@ -129,5 +146,19 @@ kmlAtlanticDivLayerGroup.addTo(map);
 kmlMetropolitanDivLayerGroup.addTo(map);
 kmlPacificDivLayerGroup.addTo(map);
 
+statsLayerGroup.addTo(map);
 
-//layerControl.addOverlay(teamsLayerGroup, "Teams");
+
+
+
+
+var clipboard = new ClipboardJS('#copyButton', {
+  target: function(trigger) {
+      return trigger.nextElementSibling;
+  }
+});
+
+clipboard.on('success', function(e) {
+  alert('Code copied to clipboard!');
+  e.clearSelection();
+});
