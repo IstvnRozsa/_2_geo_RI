@@ -65,28 +65,71 @@
              és emellett lehetőség van a divíziók külön layerekként történő megjelenítésére is. 
             Továbbá, a térképen szerepel egy becslés is, ami az 2023-as szezonban várható eredményeket mutatja.</p>
   
-          <h2>&#x1F5FA; Térkép Funkciók</h2>
-          <ol>
-            <li>Csapatok Megjelenítése:</li>
-            <ul>
-              <li>Kattintás egy csapatra: megjelenik a csapat teljes neve, divíziója, stadion címe, városa és hivatalos weboldala.</li>
-              <li>Divíziók megjelenítése külön layerekként.</li>
-            </ul>
-            <li>Térkép Váltása:</li>
-            <ul>
-              <li>Satelit</li>
-              <li>OpenStreetMap</li>
-              <li>OpenStreetMap by Mapbox</li>
-            </ul>
-            <li>Becslés</li>
-            <ul>
-              <li>Megjelenít egy becslést a 2023/2024-es szezonra vonatkozóan az egyes csapatok teljesítményéről.</li>
-            </ul>
-          </ol>
+          <h2 class="text-center">&#x1F5FA; Térkép Funkciók</h2>
+          <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body custom-card">
+                      <h3>&#x1F465; Csapatok Megjelenítése</h3>
+                      <p>Kattintás egy csapatra: megjelenik a csapat:
+                        teljes neve, divíziója, stadion címe, városa és hivatalos weboldala.
+                        Divíziók megjelenítése külön layerekként.</p>
+                      
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card">
+                  <div class="card-body custom-card">
+                    <h3>&#x1F501; Térkép Váltása</h3>
+                    <ul>
+                      <li>Satelit</li>
+                      <li>OpenStreetMap</li>
+                      <li>OpenStreetMap by Mapbox</li>
+                    </ul>
+                    
+                  </div>
+              </div>
+          </div>
+    
+          </div>
+          
+          
+          <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body custom-card">
+                      <h3>&#x1F4CF; KML Fájlok</h3>
+                      <p>A KML fájlok előállításához először le kellett szűrni a diviziókra. A létrehozott fájlok a ligán belüli azonos divízióban lévő csapatokat köti össze, ezek külön rétegenként jelennek meg a térképen.</p>
+                      
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body custom-card">
+                      <h3>&#x1F52E; Következő szezon előrejelzés</h3>
+                      <p>Észak amerikára vetítve megjelenik egy külön rétegként a 2023-2024-es szezon előrejelzett pontszámai és helyezései.</p>
+                      
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body custom-card">
+                      <h3>&#x1F3C6; Az előző 6 év bajnoka label</h3>
+                      <p>A térkép bal alsó sarkában egy listában látható az előző 6 év bajnoka.</p>
+                
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
 
           <div class="container-sm">
 
-            <h2>&#x1F4CA; Előzetes adat feldolgozás és transzformáció</h2>
+            <h2 class="mt-5 mb-4">&#x1F4CA; Előzetes adat feldolgozás és transzformáció</h2>
             <p>Az NHL API az észak amerikai jégkorong liga csapatainak adatait szolgáltatja, beleértve a csapatok nevét, stadionokat és egyéb kapcsolódó információkat, amelyek segítségével részletes és naprakész képet kaphatunk a csapatokról. Az NHL API által szolgáltatott adatokat Python programozási nyelv segítségével feldolgoztam, lehetővé téve az adatok elemzését, vizualizációját és egyéb kiértékelését a projekt számára.</p>
           <h3>&#x1F527; NHL 2023/2024 adatainak lekérdezése</h3>
               <pre>
@@ -162,38 +205,6 @@ print(f"JSON data has been saved to '{file_path}'")</code></pre>
         
       </div>
 
-      
-      
-      
-      <div class="row">
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-body">
-                  <h2>&#x1F4CF; KML Fájlok generálása</h2>
-                  <p>A KML fájlok előállításához először le kellett szűrni a diviziókra. A létrehozott fájlok a ligán belüli azonos divízióban lévő csapatokat köti össze, ezek külön rétegenként jelennek meg a térképen.</p>
-                  
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-body">
-                  <h2>&#x1F52E; Következő szezon előrejelzés</h2>
-                  <p>Észak amerikára vetítve megjelenik egy külön rétegként a 2023-2024-es szezon előrejelzett pontszámai és helyezései.</p>
-                  
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-body">
-                  <h2>&#x1F3C6; Az előző 6 év bajnoka label</h2>
-                  <p>A térkép bal alsó sarkában egy listában látható az előző 6 év bajnoka.</p>
-            
-                </div>
-            </div>
-        </div>
-    </div>
       
       <h2>&#x1F4C1; Források</h2>
       <ul>

@@ -55,3 +55,11 @@ pre{
     background-color: #343a40;
     color:#000 ;
 }
+
+.custom-card{
+    height: 170px;
+    padding-top: 20px;
+}
+.row{
+    padding-top: 20px;
+}
