@@ -149,6 +149,32 @@ kmlPacificDivLayerGroup.addTo(map);
 statsLayerGroup.addTo(map);
 
 
+var infoPanelControl = L.Control.extend({
+  options: {
+      position: 'bottomleft'
+  },
+  onAdd: function (map) {
+      // Create the info panel element
+      var infoPanel = L.DomUtil.create('div', 'info-panel');
+      infoPanel.innerHTML = `
+                              <h5>&#x1F3C6; Winners in the past 6 years</h5>
+                              <ul>
+                                <li><b>2022-2023</b>: Vegas Golden Knights</li>
+                                <li><b>2021-2022</b>: Colorado Avalanche</li>
+                                <li><b>2020-2021</b>: Tampa Bay Lightning</li>
+                                <li><b>2019-2020</b>: Tampa Bay Lightning </li>
+                                <li><b>2018-2019</b>: St. Louis Blues</li>
+                                <li><b>2017-2018</b>: Washington Capitals </li>
+                              </ul>
+                            
+                            `;
+      return infoPanel;
+  }
+});
+
+// Add the custom control to the map
+map.addControl(new infoPanelControl());
+
 
 
 
