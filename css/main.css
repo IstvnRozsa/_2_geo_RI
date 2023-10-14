@@ -44,17 +44,13 @@ pre{
 }
 
 .info-panel {
-    background-color: #343a40;
+    background-color: rgba(52, 58, 64, 0.9);
     color: white;
     padding: 10px;
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.leaflet-control-layers-toggle:after{ 
-    background-color: #343a40;
-    color:#000 ;
-}
 
 .custom-card{
     height: 170px;
@@ -63,3 +59,28 @@ pre{
 .row{
     padding-top: 20px;
 }
+
+.leaflet-control-layers-toggle:after{ 
+    background-color: #343a40;
+    color: white;
+}
+.leaflet-control-layers-toggle{
+    background-color: #343a40;
+    color: white;
+}
+.leaflet-control-layers-expanded{
+    background-color: #343a40 !important;
+    color: white !important;
+    border: 0;
+    box-shadow: 0;
+}
+
+.leaflet-control-zoom-in{
+    background-color: #343a40 !important;
+    color: white !important;
+}
+.leaflet-control-zoom-out{
+    background-color: #343a40 !important;
+    color: white !important;
+}
+
