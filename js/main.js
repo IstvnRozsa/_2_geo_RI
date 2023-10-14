@@ -1,5 +1,3 @@
-var westernTeamsCoordinates1 = [];
-var easternTeamsCoordinates1 = [];
 var teamsLayerGroup = L.layerGroup();
 // Fetch JSON data from a local file using fetch API
 fetch("data/data.json")
@@ -111,11 +109,12 @@ statsLayerGroup.addLayer(imageOverlay);
 
 var westernLayerGroup = L.layerGroup();
 var westernTeamsCoordinates = [
-  [53.5467936, -113.49779461115837], // San Francisco, CA (San Jose Sharks)
-  [49.2779085, -123.10894170979472], // San Francisco, CA (San Jose Sharks)
-  [37.33286035, -121.90122465574646], // Los Angeles, CA (Los Angeles Kings)
+  [53.5467936, -113.49779461115837], // Starts at Edmonton to the left
+  [49.2779085, -123.10894170979472], 
+  [37.33286035, -121.90122465574646], 
   [34.0429979, -118.2671352463293],
   [33.80783155, -117.876533959295],
+  [33.426643, -111.92848865050732],
   [33.426643, -111.92848865050732],
   [32.7905076, -96.81027213460834],
   [36.1589806, -86.77838189265074],
@@ -136,12 +135,13 @@ westernLayerGroup.addLayer(westernDivisionPolygon);
 
 var easternLayerGroup = L.layerGroup();
 var easternTeamsCoordinates = [
-  [42.34092995, -83.05516216701272], // San Francisco, CA (San Jose Sharks)
-  [27.942704, -82.45189031562487], // San Francisco, CA (San Jose Sharks)
-  [26.158496,-80.32552], // San Francisco, CA (San Jose Sharks)
-  [42.3662986, -71.06216222263835], // San Francisco, CA (San Jose Sharks)
-  [ 45.49605985, -73.56923562545731],  // San Francisco, CA (San Jose Sharks)
-  [ 45.296906899999996, -75.92689732572379],  // San Francisco, CA (San Jose Sharks)
+  [42.34092995, -83.05516216701272], // Starts at Detroit goes to the left
+  [39.9691873, -83.00608002061449],
+  [27.942704, -82.45189031562487], 
+  [26.158496,-80.32552], 
+  [42.3662986, -71.06216222263835], 
+  [ 45.49605985, -73.56923562545731],  
+  [ 45.296906899999996, -75.92689732572379], 
   
 ];
 
