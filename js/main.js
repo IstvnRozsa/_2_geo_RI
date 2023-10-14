@@ -29,9 +29,16 @@ fetch("data/data.json")
                     </p>
                 `
       // Add a marker to the map
-      var marker = L.marker([item.latitude, item.longitude], {icon: hockeyIcon})
+      var marker = L.marker([item.latitude, item.longitude], {icon: hockeyIcon,name: item.name })
         .bindPopup(html) // Add a popup to the marker with a message
       teamsLayerGroup.addLayer(marker);
+
+      marker.on('mouseover', function () {
+        var teamName = document.getElementById('selected-team');
+        var iconUrl = `https://assets.nhle.com/logos/nhl/svg/${item.abbreviation}_dark.svg`
+        teamName.innerHTML = `<span><img src="${iconUrl}" alt="Icon" width="30" height="30"></span> ${this.options.name}`;
+        console.log(this.options.name);
+      });
 
       console.log(item);
     });
@@ -172,19 +179,21 @@ var infoPanelControl = L.Control.extend({
   }
 });
 
-// Add the custom control to the map
-map.addControl(new infoPanelControl());
-
-
-
-
-var clipboard = new ClipboardJS('#copyButton', {
-  target: function(trigger) {
-      return trigger.nextElementSibling;
+var selectedPanelControl = L.Control.extend({
+  options: {
+      position: 'bottomright'
+  },
+  onAdd: function (map) {
+      // Create the info panel element
+      var infoPanel2 = L.DomUtil.create('div', 'info-panel');
+      infoPanel2.innerHTML = `
+                              <h6 id="selected-team"><span><img src="/pictures/ice-hockey.png" alt="Icon" width="20" height="20"></span>Hover over a team</h6>
+                            `;
+      return infoPanel2;
   }
 });
 
-clipboard.on('success', function(e) {
-  alert('Code copied to clipboard!');
-  e.clearSelection();
-});
+// Add the custom control to the map
+map.addControl(new infoPanelControl());
+map.addControl(new selectedPanelControl());
+

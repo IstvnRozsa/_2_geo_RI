@@ -1,17 +1,12 @@
-document.addEventListener("DOMContentLoaded", function () {
-  var map = L.map('map').setView([51.505, -0.09], 13);
-  var darkLayer = L.tileLayer.dark();
-  var lightLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+var map = L.map('map').setView([51.505, -0.09], 13);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
 
-  darkLayer.addTo(map); // Default: Dark Mode
-
-  document.getElementById("toggleMode").addEventListener("click", function () {
-      if (map.hasLayer(darkLayer)) {
-          map.removeLayer(darkLayer);
-          map.addLayer(lightLayer);
-      } else {
-          map.removeLayer(lightLayer);
-          map.addLayer(darkLayer);
-      }
-  });
-});
+var circle = L.circle([51.508, -0.11], {
+    color: 'black',
+    fillColor: '#f03',
+    fillOpacity: 0.5,
+    radius: 500
+}).addTo(map);
