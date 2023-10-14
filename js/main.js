@@ -1,4 +1,5 @@
-
+var westernTeamsCoordinates1 = [];
+var easternTeamsCoordinates1 = [];
 var teamsLayerGroup = L.layerGroup();
 // Fetch JSON data from a local file using fetch API
 fetch("data/data.json")
@@ -8,9 +9,7 @@ fetch("data/data.json")
     data.forEach((item) => {
       var hockeyIcon = L.icon({
         iconUrl: `https://assets.nhle.com/logos/nhl/svg/${item.abbreviation}_dark.svg`, // URL to your custom icon image  ./pictures/ice-hockey.png https://assets.nhle.com/logos/nhl/svg/BOS_dark.svg
-        iconSize: [50, 50],
-        iconAnchor: [16, 32],
-        popupAnchor: [0, -32]
+        iconSize: [30, 30]
       });
 
       var html = `
@@ -25,6 +24,8 @@ fetch("data/data.json")
                       <li><b>City:</b> ${item.venue.city}</li>
                       <li><b>Venue:</b> ${item.venue.name}</li>
                       <li><b>Address:</b> ${item.address}</li>
+                      <li><b>Long:</b> ${item.longitude}</li>
+                      <li><b>Lat:</b> ${item.latitude}</li>
                     </ul>
                     </p>
                 `
@@ -41,6 +42,7 @@ fetch("data/data.json")
       });
 
       console.log(item);
+      
     });
   })
   .catch((error) => {
@@ -107,10 +109,57 @@ var imageOverlay = L.imageOverlay(imageUrl, latLngBounds, {
 });
 statsLayerGroup.addLayer(imageOverlay);
 
+var westernLayerGroup = L.layerGroup();
+var westernTeamsCoordinates = [
+  [53.5467936, -113.49779461115837], // San Francisco, CA (San Jose Sharks)
+  [49.2779085, -123.10894170979472], // San Francisco, CA (San Jose Sharks)
+  [37.33286035, -121.90122465574646], // Los Angeles, CA (Los Angeles Kings)
+  [34.0429979, -118.2671352463293],
+  [33.80783155, -117.876533959295],
+  [33.426643, -111.92848865050732],
+  [32.7905076, -96.81027213460834],
+  [36.1589806, -86.77838189265074],
+  [41.88068305, -87.67418510441388],
+  [49.8925737, -97.1437218346315],
+];
+
+// Create a polygon (square) using the Western Division teams' coordinates
+var westernDivisionPolygon = L.polygon(westernTeamsCoordinates, {
+  color: '#e49273',  // Border color of the square
+  fillColor: '#e49273',  // Fill color of the square
+  fillOpacity: 0.5,  // Opacity of the fill color
+})
+// Fit the map to the bounds of the polygon (square)
+westernLayerGroup.addLayer(westernDivisionPolygon);
+
+
+
+var easternLayerGroup = L.layerGroup();
+var easternTeamsCoordinates = [
+  [42.34092995, -83.05516216701272], // San Francisco, CA (San Jose Sharks)
+  [27.942704, -82.45189031562487], // San Francisco, CA (San Jose Sharks)
+  [26.158496,-80.32552], // San Francisco, CA (San Jose Sharks)
+  [42.3662986, -71.06216222263835], // San Francisco, CA (San Jose Sharks)
+  [ 45.49605985, -73.56923562545731],  // San Francisco, CA (San Jose Sharks)
+  [ 45.296906899999996, -75.92689732572379],  // San Francisco, CA (San Jose Sharks)
+  
+];
+
+// Create a polygon (square) using the Western Division teams' coordinates
+var easternDivisionPolygon = L.polygon(easternTeamsCoordinates, {
+  color: "#343a40",  // Border color of the square
+  fillColor: "#343a40",  // Fill color of the square
+  fillOpacity: 0.5,  // Opacity of the fill color
+})
+// Fit the map to the bounds of the polygon (square)
+easternLayerGroup.addLayer(easternDivisionPolygon);
+
 
 // Create an overlay object for the layer control
 var overlays = {
   "Teams": teamsLayerGroup,
+  "Western Conference":westernLayerGroup,
+  "Eastern Conference":easternLayerGroup,
   "Central division":kmlCentralDivLayerGroup,
   "Atlantic division":kmlAtlanticDivLayerGroup,
   "Metropolitan division":kmlMetropolitanDivLayerGroup,
