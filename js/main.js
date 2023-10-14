@@ -9,9 +9,10 @@ fetch("data/data.json")
         iconUrl: `https://assets.nhle.com/logos/nhl/svg/${item.abbreviation}_dark.svg`, // URL to your custom icon image  ./pictures/ice-hockey.png https://assets.nhle.com/logos/nhl/svg/BOS_dark.svg
         iconSize: [30, 30]
       });
-
+      
+      var iconUrl = `https://assets.nhle.com/logos/nhl/svg/${item.abbreviation}_dark.svg`
       var html = `
-                    <h3>${item.name}</h3>
+                    <h3><span><img src="${iconUrl}" alt="Icon" height="30"></span> ${item.name}</h3>
                     <h6><a href="${item.officialSiteUrl}">Offical site</a></h6>
                     <p>
                     
@@ -34,7 +35,6 @@ fetch("data/data.json")
 
       marker.on('mouseover', function () {
         var teamName = document.getElementById('selected-team');
-        var iconUrl = `https://assets.nhle.com/logos/nhl/svg/${item.abbreviation}_dark.svg`
         teamName.innerHTML = `<span><img src="${iconUrl}" alt="Icon" width="30" height="30"></span> ${this.options.name}`;
         console.log(this.options.name);
       });
