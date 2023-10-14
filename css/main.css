@@ -79,9 +79,9 @@ pre{
 }
 
 .leaflet-popup-content-wrapper{
-    background-color: #343a40 !important;
+    background-color: rgba(52, 58, 64, 0.9) !important;
     color: white !important;
 }
 .leaflet-popup-tip{
-    background-color: #343a40 !important;
+    background-color: rgba(52, 58, 64, 0.9) !important;
 }
